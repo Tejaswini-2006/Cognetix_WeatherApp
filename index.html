@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Weather App | Cognetix Internship</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="weather-app">
+
+        <!-- Header -->
+        <header class="app-header">
+            <h1>Weather App</h1>
+            <p>Get real-time weather information for any city</p>
+        </header>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <form id="searchForm" class="search-form">
+
+                <label for="cityInput" class="sr-only">
+                    Enter city name
+                </label>
+
+                <input
+                    type="text"
+                    id="cityInput"
+                    placeholder="Enter city name..."
+                    autocomplete="off"
+                    required
+                >
+
+                <button type="submit" id="searchBtn">
+                    Search
+                </button>
+
+            </form>
+        </section>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="error-message" role="alert"></div>
+
+        <!-- Weather Card -->
+        <section id="weatherCard" class="weather-card">
+
+            <div class="weather-header">
+                <div>
+                    <h2 id="cityName">City Name</h2>
+                    <p id="weatherDescription">Weather condition</p>
+                </div>
+
+                <img
+                    id="weatherIcon"
+                    src=""
+                    alt="Weather condition"
+                >
+            </div>
+
+            <!-- Temperature -->
+            <div class="temperature-section">
+                <span id="temperature">--</span>
+                <span id="temperatureUnit">°C</span>
+            </div>
+
+            <!-- Weather Details -->
+            <div class="weather-details">
+
+                <div class="weather-detail">
+                    <span class="detail-icon">💧</span>
+                    <div>
+                        <p>Humidity</p>
+                        <strong id="humidity">--%</strong>
+                    </div>
+                </div>
+
+                <div class="weather-detail">
+                    <span class="detail-icon">💨</span>
+                    <div>
+                        <p>Wind Speed</p>
+                        <strong id="windSpeed">--</strong>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Temperature Toggle -->
+            <div class="unit-toggle">
+                <button
+                    type="button"
+                    id="celsiusBtn"
+                    class="unit-btn active"
+                >
+                    °C
+                </button>
+
+                <button
+                    type="button"
+                    id="fahrenheitBtn"
+                    class="unit-btn"
+                >
+                    °F
+                </button>
+            </div>
+
+        </section>
+
+        <!-- Loading -->
+        <div id="loading" class="loading">
+            Loading weather...
+        </div>
+
+    </main>
+
+    <script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

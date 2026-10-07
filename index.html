@@ -1,95 +1,216 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Weather App | Cognetix Internship</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Responsive real-time weather application using OpenWeather API"
+    >
+
+    <title>Weather App | Cognetix Technology</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="weather-day">
 
     <main class="weather-app">
 
-        <!-- Header -->
-        <header class="app-header">
-            <h1>Weather App</h1>
-            <p>Get real-time weather information for any city</p>
-        </header>
+        <section class="weather-panel">
 
-        <!-- Search Section -->
-        <section class="search-section">
-            <form id="searchForm" class="search-form">
+            <!-- =================================
+                 LOCATION
+            ================================== -->
 
-                <label for="cityInput" class="sr-only">
-                    Enter city name
-                </label>
+            <div class="location-section">
 
-                <input
-                    type="text"
-                    id="cityInput"
-                    placeholder="Enter city name..."
-                    autocomplete="off"
-                    required
+                <span class="weather-label">
+                    CURRENT WEATHER
+                </span>
+
+                <div class="location-row">
+
+                    <h1 id="cityName">
+                        City Name
+                    </h1>
+
+                    <span class="location-dot"></span>
+
+                </div>
+
+                <p id="weatherDescription">
+                    Search for a city
+                </p>
+
+            </div>
+
+
+            <!-- =================================
+                 WEATHER VISUAL
+            ================================== -->
+
+            <div class="weather-visual">
+
+                <!-- ==============================
+                     SUN
+                =============================== -->
+
+                <div
+                    id="sunVisual"
+                    class="celestial sun"
+                    aria-label="Sunny weather"
                 >
 
-                <button type="submit" id="searchBtn">
-                    Search
-                </button>
+                    <div class="sun-glow"></div>
 
-            </form>
-        </section>
+                    <div class="sun-core"></div>
 
-        <!-- Error Message -->
-        <div id="errorMessage" class="error-message" role="alert"></div>
+                    <div class="sun-highlight"></div>
 
-        <!-- Weather Card -->
-        <section id="weatherCard" class="weather-card">
-
-            <div class="weather-header">
-                <div>
-                    <h2 id="cityName">City Name</h2>
-                    <p id="weatherDescription">Weather condition</p>
                 </div>
+
+
+                <!-- ==============================
+                     MOON
+                =============================== -->
+
+                <div
+                    id="moonVisual"
+                    class="celestial moon"
+                    aria-label="Night weather"
+                >
+
+                    <div class="moon-glow"></div>
+
+                    <div class="moon-crescent">
+
+                        <span class="moon-crater crater-one"></span>
+
+                        <span class="moon-crater crater-two"></span>
+
+                        <span class="moon-crater crater-three"></span>
+
+                        <span class="moon-crater crater-four"></span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==============================
+                     CLOUD / RAIN / SNOW ICON
+                =============================== -->
 
                 <img
                     id="weatherIcon"
                     src=""
                     alt="Weather condition"
                 >
+
             </div>
 
-            <!-- Temperature -->
+
+            <!-- =================================
+                 TEMPERATURE
+            ================================== -->
+
             <div class="temperature-section">
-                <span id="temperature">--</span>
-                <span id="temperatureUnit">°C</span>
+
+                <span id="temperature">
+                    --
+                </span>
+
+                <span id="temperatureUnit">
+                    °C
+                </span>
+
             </div>
 
-            <!-- Weather Details -->
+
+            <!-- =================================
+                 WEATHER DETAILS
+            ================================== -->
+
             <div class="weather-details">
 
                 <div class="weather-detail">
-                    <span class="detail-icon">💧</span>
-                    <div>
-                        <p>Humidity</p>
-                        <strong id="humidity">--%</strong>
+
+                    <div class="detail-symbol">
+                        💧
                     </div>
+
+                    <div class="detail-content">
+
+                        <span>
+                            Humidity
+                        </span>
+
+                        <strong id="humidity">
+                            --%
+                        </strong>
+
+                    </div>
+
                 </div>
 
+
                 <div class="weather-detail">
-                    <span class="detail-icon">💨</span>
-                    <div>
-                        <p>Wind Speed</p>
-                        <strong id="windSpeed">--</strong>
+
+                    <div class="detail-symbol">
+                        💨
                     </div>
+
+                    <div class="detail-content">
+
+                        <span>
+                            Wind Speed
+                        </span>
+
+                        <strong id="windSpeed">
+                            -- m/s
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="weather-detail">
+
+                    <div class="detail-symbol">
+                        🌡️
+                    </div>
+
+                    <div class="detail-content">
+
+                        <span>
+                            Feels Like
+                        </span>
+
+                        <strong id="feelsLike">
+                            --°C
+                        </strong>
+
+                    </div>
+
                 </div>
 
             </div>
 
-            <!-- Temperature Toggle -->
+
+            <!-- =================================
+                 TEMPERATURE TOGGLE
+            ================================== -->
+
             <div class="unit-toggle">
+
                 <button
                     type="button"
                     id="celsiusBtn"
@@ -105,18 +226,99 @@
                 >
                     °F
                 </button>
+
             </div>
+
+
+            <!-- =================================
+                 SEARCH
+            ================================== -->
+
+            <div class="search-section">
+
+                <form
+                    id="searchForm"
+                    class="search-form"
+                >
+
+                    <div class="search-input-wrapper">
+
+                        <span class="search-symbol">
+                            ⌕
+                        </span>
+
+                        <label
+                            for="cityInput"
+                            class="sr-only"
+                        >
+                            Enter city name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cityInput"
+                            placeholder="Search for a city..."
+                            autocomplete="off"
+                            required
+                        >
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        id="searchBtn"
+                    >
+                        Search
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- =================================
+                 ERROR
+            ================================== -->
+
+            <div
+                id="errorMessage"
+                class="error-message"
+                role="alert"
+            ></div>
+
+
+            <!-- =================================
+                 LOADING
+            ================================== -->
+
+            <div
+                id="loading"
+                class="loading"
+            >
+
+                <span class="loader"></span>
+
+                Getting weather...
+
+            </div>
+
+
+            <!-- =================================
+                 FOOTER
+            ================================== -->
+
+            <footer>
+                Powered by OpenWeather API
+            </footer>
 
         </section>
 
-        <!-- Loading -->
-        <div id="loading" class="loading">
-            Loading weather...
-        </div>
-
     </main>
 
+
     <script src="config.js"></script>
-<script src="script.js"></script>
+    <script src="script.js"></script>
+
 </body>
+
 </html>

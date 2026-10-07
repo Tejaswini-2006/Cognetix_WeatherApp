@@ -1,6 +1,6 @@
-/* ================================
-   Weather App - Global Styles
-================================ */
+/* =========================================
+   RESET
+========================================= */
 
 * {
     margin: 0;
@@ -8,336 +8,1747 @@
     box-sizing: border-box;
 }
 
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+:root {
+
+    --white: #ffffff;
+
+    --accent: #ff8500;
+
+    --accent-dark: #ff4d00;
+
+    --night-accent: #b9cfff;
+
+    --glass-border:
+        rgba(255, 255, 255, 0.25);
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
 body {
+
     min-height: 100vh;
-    font-family: Arial, sans-serif;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
-    padding: 20px;
 
-    background: linear-gradient(
-        135deg,
-        #4facfe,
-        #00f2fe
-    );
-
-    color: #ffffff;
-}
-
-/* ================================
-   Main App
-================================ */
-
-.weather-app {
-    width: 100%;
-    max-width: 450px;
-    padding: 30px;
-
-    background: rgba(255, 255, 255, 0.15);
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 24px;
-
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-}
-
-/* ================================
-   Header
-================================ */
-
-.app-header {
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.app-header h1 {
-    font-size: 32px;
-    margin-bottom: 8px;
-}
-
-.app-header p {
-    font-size: 14px;
-    opacity: 0.85;
-}
-
-/* ================================
-   Search
-================================ */
-
-.search-form {
-    display: flex;
-    gap: 10px;
-}
-
-.search-form input {
-    flex: 1;
-    min-width: 0;
-
-    padding: 13px 15px;
-
-    border: none;
-    border-radius: 12px;
-
-    outline: none;
-    font-size: 15px;
-}
-
-.search-form input:focus {
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35);
-}
-
-.search-form button {
-    padding: 13px 18px;
-
-    border: none;
-    border-radius: 12px;
-
-    background: #ffffff;
-    color: #1687d9;
-
-    font-size: 15px;
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: transform 0.2s ease,
-                background 0.2s ease;
-}
-
-.search-form button:hover {
-    transform: translateY(-2px);
-    background: #f1f1f1;
-}
-
-/* ================================
-   Error Message
-================================ */
-
-.error-message {
-    display: none;
-
-    margin-top: 15px;
-    padding: 12px;
-
-    border-radius: 10px;
-
-    background: rgba(255, 70, 70, 0.25);
-    border: 1px solid rgba(255, 150, 150, 0.5);
-
-    text-align: center;
-    font-size: 14px;
-}
-
-/* ================================
-   Weather Card
-================================ */
-
-.weather-card {
-    margin-top: 25px;
     padding: 25px;
 
-    background: rgba(255, 255, 255, 0.12);
+    overflow-x: hidden;
 
-    border-radius: 20px;
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
 
-    text-align: center;
+    color: white;
+
+    transition:
+        background 0.8s ease;
 }
 
-.weather-header {
+
+/* =========================================
+   DAY
+========================================= */
+
+body.weather-day {
+
+    background:
+        radial-gradient(
+            circle at 75% 20%,
+            rgba(255, 244, 180, 0.38),
+            transparent 25%
+        ),
+
+        linear-gradient(
+            135deg,
+            #ffb300 0%,
+            #ff7b00 45%,
+            #ff3d00 100%
+        );
+}
+
+
+/* =========================================
+   HOT
+========================================= */
+
+body.weather-hot {
+
+    background:
+        radial-gradient(
+            circle at 75% 20%,
+            rgba(255, 235, 130, 0.42),
+            transparent 25%
+        ),
+
+        linear-gradient(
+            135deg,
+            #ffc400 0%,
+            #ff8200 45%,
+            #ff3600 100%
+        );
+}
+
+
+/* =========================================
+   NIGHT
+========================================= */
+
+body.weather-night {
+
+    background:
+
+        radial-gradient(
+            circle at 18% 18%,
+            rgba(95, 125, 190, 0.14),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 80% 15%,
+            rgba(145, 165, 225, 0.12),
+            transparent 23%
+        ),
+
+        linear-gradient(
+            135deg,
+            #050d24 0%,
+            #0b1b3f 48%,
+            #020610 100%
+        );
+}
+
+
+/* =========================================
+   NIGHT STARS
+========================================= */
+
+body.weather-night::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.7;
+
+    background-image:
+
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.8) 0 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle,
+            rgba(190, 210, 255, 0.65) 0 1px,
+            transparent 1.5px
+        ),
+
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.5) 0 1px,
+            transparent 1.5px
+        );
+
+    background-size:
+        130px 150px,
+        190px 210px,
+        260px 240px;
+
+    background-position:
+        20px 30px,
+        80px 60px,
+        130px 10px;
+
+    z-index: -1;
+}
+
+
+/* =========================================
+   CLOUDS
+========================================= */
+
+body.weather-clouds {
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #8da7b8,
+            #536f83,
+            #263c50
+        );
+}
+
+
+/* =========================================
+   RAIN
+========================================= */
+
+body.weather-rain {
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #12364e,
+            #1b5875,
+            #061522
+        );
+}
+
+
+/* =========================================
+   SNOW
+========================================= */
+
+body.weather-snow {
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #d5f4ff,
+            #80cce5,
+            #4b829b
+        );
+}
+
+
+/* =========================================
+   STORM
+========================================= */
+
+body.weather-storm {
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #18172d,
+            #373456,
+            #06060f
+        );
+}
+
+
+/* =========================================
+   MAIN APP
+========================================= */
+
+.weather-app {
+
+    width:
+        min(1100px, 100%);
+
+    min-height: 680px;
+
     display: flex;
-    justify-content: space-between;
+
+    justify-content: center;
+
     align-items: center;
-    gap: 15px;
+
+    padding: 35px;
+
+    border-radius: 38px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.24);
+
+    box-shadow:
+        0 40px 100px
+        rgba(0, 0, 0, 0.28);
+
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
 }
 
-.weather-header h2 {
-    font-size: 25px;
-    margin-bottom: 5px;
+
+/* =========================================
+   NIGHT APP
+========================================= */
+
+body.weather-night .weather-app {
+
+    background:
+        rgba(18, 35, 75, 0.28);
+
+    border-color:
+        rgba(190, 210, 255, 0.18);
+
+    box-shadow:
+        0 40px 100px
+        rgba(0, 0, 0, 0.48);
 }
 
-.weather-header p {
+
+/* =========================================
+   WEATHER PANEL
+========================================= */
+
+.weather-panel {
+
+    position: relative;
+
+    width: 100%;
+
+    max-width: 965px;
+
+    min-height: 610px;
+
+    padding: 45px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 280px;
+
+    grid-template-rows:
+        auto
+        auto
+        auto
+        auto
+        auto;
+
+    column-gap: 35px;
+
+    align-items: center;
+
+    border-radius: 32px;
+
+    background:
+        rgba(255, 255, 255, 0.12);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.28);
+
+    box-shadow:
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.18),
+
+        0 25px 70px
+        rgba(0, 0, 0, 0.15);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+}
+
+
+/* =========================================
+   NIGHT PANEL
+========================================= */
+
+body.weather-night .weather-panel {
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(76, 91, 125, 0.68),
+            rgba(45, 59, 91, 0.60)
+        );
+
+    border-color:
+        rgba(205, 220, 255, 0.20);
+
+    box-shadow:
+
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.16),
+
+        0 25px 70px
+        rgba(0, 0, 0, 0.32);
+}
+
+
+/* =========================================
+   LOCATION
+========================================= */
+
+.location-section {
+
+    grid-column: 1;
+
+    grid-row: 1;
+
+    z-index: 3;
+}
+
+
+.weather-label {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    opacity: 0.72;
+}
+
+
+.location-row {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+.location-row h1 {
+
+    font-size:
+        clamp(35px, 5vw, 60px);
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+}
+
+
+.location-dot {
+
+    width: 11px;
+
+    height: 11px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.9);
+
+    box-shadow:
+        0 0 15px
+        rgba(255, 255, 255, 0.7);
+}
+
+
+.location-section p {
+
+    margin-top: 12px;
+
+    font-size: 18px;
+
     text-transform: capitalize;
+
     opacity: 0.85;
 }
 
-.weather-header img {
-    width: 90px;
-    height: 90px;
-}
 
-/* ================================
-   Temperature
-================================ */
+/* =========================================
+   WEATHER VISUAL
+========================================= */
 
-.temperature-section {
-    margin: 10px 0 25px;
+.weather-visual {
+
+    grid-column: 2;
+
+    grid-row: 1 / span 2;
+
+    width: 260px;
+
+    height: 260px;
 
     display: flex;
+
     justify-content: center;
-    align-items: flex-start;
-}
 
-#temperature {
-    font-size: 64px;
-    font-weight: bold;
-}
-
-#temperatureUnit {
-    margin-top: 10px;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-/* ================================
-   Weather Details
-================================ */
-
-.weather-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
-
-.weather-detail {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
 
-    padding: 15px 10px;
-
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 14px;
-}
-
-.detail-icon {
-    font-size: 25px;
-}
-
-.weather-detail p {
-    font-size: 12px;
-    opacity: 0.75;
-    margin-bottom: 3px;
-}
-
-.weather-detail strong {
-    font-size: 15px;
-}
-
-/* ================================
-   Temperature Unit Buttons
-================================ */
-
-.unit-toggle {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-
-    margin-top: 20px;
-}
-
-.unit-btn {
-    width: 50px;
-    padding: 8px;
-
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-radius: 20px;
+    position: relative;
 
     background: transparent;
-    color: #ffffff;
+
+    border: none;
+
+    box-shadow: none;
+}
+
+
+/* =========================================
+   CELESTIAL
+========================================= */
+
+.celestial {
+
+    position: absolute;
+
+    width: 190px;
+
+    height: 190px;
+
+    border-radius: 50%;
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+}
+
+
+/* =========================================
+   SUN
+========================================= */
+
+.sun {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    opacity: 1;
+
+    transform:
+        scale(1);
+}
+
+
+.sun::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 235px;
+
+    height: 235px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(255, 244, 170, 0.65) 0%,
+            rgba(255, 211, 90, 0.30) 38%,
+            rgba(255, 170, 0, 0.10) 60%,
+            transparent 75%
+        );
+
+    filter:
+        blur(8px);
+}
+
+
+.sun::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 200px;
+
+    height: 200px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(255, 255, 225, 0.48),
+            rgba(255, 208, 72, 0.18) 50%,
+            transparent 72%
+        );
+
+    filter:
+        blur(2px);
+}
+
+
+.sun-glow {
+
+    position: absolute;
+
+    width: 155px;
+
+    height: 155px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(255, 251, 190, 0.95) 0%,
+            rgba(255, 221, 103, 0.75) 45%,
+            rgba(255, 171, 42, 0.35) 68%,
+            transparent 100%
+        );
+
+    box-shadow:
+
+        0 0 45px
+        rgba(255, 220, 90, 0.75),
+
+        0 0 90px
+        rgba(255, 180, 40, 0.40);
+}
+
+
+.sun-core {
+
+    position: absolute;
+
+    width: 112px;
+
+    height: 112px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle at 32% 28%,
+            #fffde0 0%,
+            #ffe98a 25%,
+            #ffc52e 55%,
+            #f39a13 78%,
+            #df7410 100%
+        );
+
+    box-shadow:
+
+        inset -12px -15px 25px
+        rgba(196, 93, 0, 0.30),
+
+        inset 10px 10px 20px
+        rgba(255, 255, 220, 0.55),
+
+        0 0 35px
+        rgba(255, 205, 65, 0.75);
+}
+
+
+.sun-highlight {
+
+    position: absolute;
+
+    width: 35px;
+
+    height: 20px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 235, 0.55);
+
+    top: 72px;
+
+    left: 82px;
+
+    filter:
+        blur(5px);
+
+    transform:
+        rotate(-30deg);
+}
+
+
+/* =========================================
+   MOON
+========================================= */
+
+.moon {
+
+    opacity: 0;
+
+    transform:
+        scale(0.75);
+
+    pointer-events: none;
+}
+
+
+/* Moon atmospheric glow */
+
+.moon-glow {
+
+    position: absolute;
+
+    width: 235px;
+
+    height: 235px;
+
+    left: -22px;
+
+    top: -22px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(220, 231, 255, 0.30) 0%,
+            rgba(175, 198, 245, 0.17) 35%,
+            rgba(125, 155, 215, 0.08) 58%,
+            transparent 74%
+        );
+
+    filter:
+        blur(10px);
+
+    animation:
+        moonGlow 4s ease-in-out infinite alternate;
+}
+
+
+@keyframes moonGlow {
+
+    from {
+        opacity: 0.65;
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+}
+
+
+/*
+    REALISTIC CRESCENT
+
+    The moon is created from a silver
+    circular shape + an inner cut-out.
+*/
+
+.moon-crescent {
+
+    position: absolute;
+
+    width: 138px;
+
+    height: 138px;
+
+    border-radius: 50%;
+
+    background:
+
+        radial-gradient(
+            circle at 30% 25%,
+            #ffffff 0%,
+            #f5f7ff 18%,
+            #dbe4f7 48%,
+            #aebbd4 78%,
+            #8795b1 100%
+        );
+
+    box-shadow:
+
+        inset -12px -12px 25px
+        rgba(66, 80, 110, 0.22),
+
+        inset 9px 9px 18px
+        rgba(255, 255, 255, 0.55),
+
+        0 0 28px
+        rgba(214, 227, 255, 0.75),
+
+        0 0 65px
+        rgba(168, 194, 255, 0.30);
+
+    /*
+       This creates the crescent cut.
+    */
+
+    overflow: hidden;
+}
+
+
+/*
+   Dark cut-out is NOT a separate giant
+   black circle.
+
+   It is a subtle overlay that follows
+   the moon edge.
+*/
+
+.moon-crescent::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 132px;
+
+    height: 132px;
+
+    border-radius: 50%;
+
+    top: -7px;
+
+    left: 48px;
+
+    background:
+
+        radial-gradient(
+            circle at 35% 35%,
+            rgba(15, 30, 65, 0.94),
+            rgba(9, 22, 53, 0.98)
+        );
+
+    box-shadow:
+        -8px 0 15px
+        rgba(210, 225, 255, 0.10);
+}
+
+
+/* =========================================
+   MOON CRATERS
+========================================= */
+
+.moon-crater {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background:
+        rgba(115, 130, 160, 0.22);
+
+    z-index: 5;
+}
+
+
+.crater-one {
+
+    width: 18px;
+
+    height: 18px;
+
+    left: 34px;
+
+    top: 35px;
+}
+
+
+.crater-two {
+
+    width: 11px;
+
+    height: 11px;
+
+    left: 53px;
+
+    top: 68px;
+}
+
+
+.crater-three {
+
+    width: 14px;
+
+    height: 14px;
+
+    left: 25px;
+
+    top: 88px;
+}
+
+
+.crater-four {
+
+    width: 8px;
+
+    height: 8px;
+
+    left: 62px;
+
+    top: 27px;
+}
+
+
+/* =========================================
+   SHOW MOON
+========================================= */
+
+body.weather-night .sun {
+
+    opacity: 0;
+
+    transform:
+        scale(0.75);
+}
+
+
+body.weather-night .moon {
+
+    opacity: 1;
+
+    transform:
+        scale(1);
+}
+
+
+/* =========================================
+   WEATHER ICON
+========================================= */
+
+#weatherIcon {
+
+    position: absolute;
+
+    width: 190px;
+
+    height: 190px;
+
+    object-fit: contain;
+
+    display: none;
+
+    background: transparent;
+
+    border: none;
+
+    box-shadow: none;
+
+    filter:
+        drop-shadow(
+            0 15px 18px
+            rgba(0, 0, 0, 0.12)
+        );
+}
+
+
+/* =========================================
+   NON-CLEAR WEATHER
+========================================= */
+
+body.weather-clouds #weatherIcon,
+body.weather-rain #weatherIcon,
+body.weather-snow #weatherIcon,
+body.weather-storm #weatherIcon {
+
+    display: block;
+}
+
+
+body.weather-clouds .sun,
+body.weather-clouds .moon,
+body.weather-rain .sun,
+body.weather-rain .moon,
+body.weather-snow .sun,
+body.weather-snow .moon,
+body.weather-storm .sun,
+body.weather-storm .moon {
+
+    display: none;
+}
+
+
+/* =========================================
+   TEMPERATURE
+========================================= */
+
+.temperature-section {
+
+    grid-column: 1;
+
+    grid-row: 2;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    margin-top: 15px;
+}
+
+
+#temperature {
+
+    font-size:
+        clamp(100px, 14vw, 175px);
+
+    line-height: 0.85;
+
+    font-weight: 700;
+
+    letter-spacing: -8px;
+
+    text-shadow:
+        0 15px 30px
+        rgba(0, 0, 0, 0.15);
+}
+
+
+#temperatureUnit {
+
+    margin-top: 12px;
+
+    margin-left: 12px;
+
+    font-size: 34px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   WEATHER DETAILS
+========================================= */
+
+.weather-details {
+
+    grid-column: 1 / -1;
+
+    grid-row: 3;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 16px;
+
+    margin-top: 30px;
+}
+
+
+.weather-detail {
+
+    min-height: 92px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding:
+        18px 22px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.18);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+
+body.weather-night .weather-detail {
+
+    background:
+        rgba(190, 205, 235, 0.10);
+
+    border-color:
+        rgba(210, 225, 255, 0.16);
+}
+
+
+.weather-detail:hover {
+
+    transform:
+        translateY(-4px);
+
+    background:
+        rgba(255, 255, 255, 0.16);
+}
+
+
+.detail-symbol {
+
+    font-size: 34px;
+
+    flex-shrink: 0;
+}
+
+
+.detail-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.detail-content span {
+
+    font-size: 12px;
+
+    opacity: 0.65;
+}
+
+
+.detail-content strong {
+
+    font-size: 19px;
+}
+
+
+/* =========================================
+   UNIT TOGGLE
+========================================= */
+
+.unit-toggle {
+
+    grid-column: 1 / -1;
+
+    grid-row: 4;
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 22px;
+}
+
+
+.unit-btn {
+
+    width: 60px;
+
+    height: 40px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.35);
+
+    border-radius: 30px;
+
+    background:
+        transparent;
+
+    color:
+        white;
+
+    font-size: 13px;
+
+    font-weight: 700;
 
     cursor: pointer;
 
-    transition: all 0.2s ease;
+    transition:
+        all 0.25s ease;
 }
 
-.unit-btn:hover,
+
 .unit-btn.active {
-    background: #ffffff;
-    color: #1687d9;
+
+    background:
+        white;
+
+    color:
+        var(--accent);
 }
 
-/* ================================
-   Loading
-================================ */
 
-.loading {
+/* =========================================
+   NIGHT UNIT BUTTON
+========================================= */
+
+body.weather-night .unit-btn.active {
+
+    color:
+        #405b96;
+}
+
+
+/* =========================================
+   SEARCH
+========================================= */
+
+.search-section {
+
+    grid-column: 1 / -1;
+
+    grid-row: 5;
+
+    margin-top: 24px;
+}
+
+
+.search-form {
+
+    width: 100%;
+
+    display: flex;
+
+    gap: 8px;
+
+    padding: 7px;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255, 255, 255, 0.95);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0, 0, 0, 0.12);
+}
+
+
+.search-input-wrapper {
+
+    position: relative;
+
+    flex: 1;
+}
+
+
+.search-symbol {
+
+    position: absolute;
+
+    left: 18px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    font-size: 27px;
+
+    color: #444;
+
+    pointer-events: none;
+}
+
+
+.search-form input {
+
+    width: 100%;
+
+    height: 55px;
+
+    padding:
+        0 15px 0 52px;
+
+    border: none;
+
+    outline: none;
+
+    background:
+        transparent;
+
+    color:
+        #222;
+
+    font-size: 16px;
+}
+
+
+.search-form button {
+
+    min-width: 145px;
+
+    height: 55px;
+
+    border: none;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--accent),
+            var(--accent-dark)
+        );
+
+    color:
+        white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+.search-form button:hover {
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+.error-message {
+
     display: none;
 
-    margin-top: 18px;
+    grid-column: 1 / -1;
+
+    margin-top: 12px;
+
+    padding: 12px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(220, 38, 38, 0.25);
+
+    border:
+        1px solid
+        rgba(255, 170, 170, 0.4);
 
     text-align: center;
+
     font-size: 14px;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.loading {
+
+    display: none;
+
+    position: absolute;
+
+    bottom: 48px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 13px;
 
     opacity: 0.85;
 }
 
-/* ================================
-   Accessibility
-================================ */
+
+.loader {
+
+    width: 16px;
+
+    height: 16px;
+
+    border:
+        2px solid
+        rgba(255, 255, 255, 0.35);
+
+    border-top-color:
+        white;
+
+    border-radius: 50%;
+
+    animation:
+        spin 0.8s linear infinite;
+}
+
+
+@keyframes spin {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+
+    position: absolute;
+
+    bottom: 13px;
+
+    left: 0;
+
+    width: 100%;
+
+    text-align: center;
+
+    font-size: 11px;
+
+    opacity: 0.55;
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
 
 .sr-only {
+
     position: absolute;
+
     width: 1px;
+
     height: 1px;
+
     padding: 0;
+
     margin: -1px;
+
     overflow: hidden;
+
     clip: rect(0, 0, 0, 0);
+
     white-space: nowrap;
+
     border: 0;
 }
 
-/* ================================
-   Tablet
-================================ */
 
-@media (max-width: 600px) {
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 850px) {
+
+    body {
+        padding: 18px;
+    }
+
 
     .weather-app {
-        padding: 22px;
+
+        min-height: 650px;
+
+        padding: 25px;
     }
 
-    .app-header h1 {
-        font-size: 28px;
+
+    .weather-panel {
+
+        padding: 32px;
+
+        grid-template-columns:
+            1fr 200px;
     }
+
+
+    .weather-visual {
+
+        width: 200px;
+
+        height: 220px;
+    }
+
 
     #temperature {
-        font-size: 55px;
+
+        font-size:
+            clamp(90px, 14vw, 135px);
     }
 }
 
-/* ================================
-   Mobile
-================================ */
 
-@media (max-width: 420px) {
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
 
     body {
-        padding: 12px;
+
+        min-height: 100vh;
+
+        padding: 10px;
+
+        align-items:
+            flex-start;
     }
+
 
     .weather-app {
-        padding: 18px;
-        border-radius: 18px;
-    }
 
-    .search-form {
-        flex-direction: column;
-    }
-
-    .search-form button {
         width: 100%;
+
+        min-height:
+            calc(100vh - 20px);
+
+        padding: 10px;
+
+        border-radius: 25px;
     }
 
-    .weather-header {
+
+    .weather-panel {
+
+        width: 100%;
+
+        min-height:
+            calc(100vh - 40px);
+
+        padding:
+            25px 18px 55px;
+
+        display: flex;
+
         flex-direction: column;
+
+        align-items: stretch;
+
+        border-radius: 22px;
     }
+
+
+    .location-section {
+        order: 1;
+    }
+
+
+    .weather-label {
+        font-size: 10px;
+    }
+
+
+    .location-row h1 {
+
+        font-size: 34px;
+
+        letter-spacing: -1px;
+    }
+
+
+    .location-section p {
+
+        font-size: 15px;
+    }
+
+
+    .weather-visual {
+
+        order: 2;
+
+        width: 210px;
+
+        height: 190px;
+
+        margin:
+            5px auto;
+    }
+
+
+    .celestial {
+
+        transform:
+            scale(0.75);
+    }
+
+
+    body.weather-night .moon {
+
+        transform:
+            scale(0.82);
+    }
+
+
+    #weatherIcon {
+
+        width: 160px;
+
+        height: 160px;
+    }
+
+
+    .temperature-section {
+
+        order: 3;
+
+        justify-content: center;
+
+        margin:
+            15px 0 30px;
+    }
+
+
+    #temperature {
+
+        font-size:
+            clamp(90px, 25vw, 120px);
+
+        letter-spacing:
+            -5px;
+    }
+
+
+    #temperatureUnit {
+
+        font-size: 25px;
+
+        margin-top: 8px;
+    }
+
 
     .weather-details {
-        grid-template-columns: 1fr;
+
+        order: 4;
+
+        grid-template-columns:
+            1fr;
+
+        gap: 10px;
+
+        margin-top: 0;
+    }
+
+
+    .weather-detail {
+
+        min-height: 68px;
+
+        padding:
+            12px 18px;
+
+        border-radius: 17px;
+    }
+
+
+    .detail-symbol {
+        font-size: 27px;
+    }
+
+
+    .detail-content strong {
+        font-size: 16px;
+    }
+
+
+    .unit-toggle {
+
+        order: 5;
+
+        margin-top: 18px;
+    }
+
+
+    .search-section {
+
+        order: 6;
+
+        margin-top: 20px;
+    }
+
+
+    .search-form {
+
+        flex-direction: column;
+
+        border-radius: 18px;
+
+        padding: 7px;
+    }
+
+
+    .search-form input {
+
+        height: 50px;
+
+        font-size: 15px;
+    }
+
+
+    .search-form button {
+
+        width: 100%;
+
+        height: 50px;
+
+        border-radius: 14px;
+    }
+
+
+    footer {
+
+        bottom: 9px;
+
+        font-size: 9px;
+    }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 380px) {
+
+    .weather-panel {
+
+        padding:
+            22px 15px 50px;
+    }
+
+
+    .location-row h1 {
+
+        font-size: 29px;
+    }
+
+
+    .weather-visual {
+
+        width: 180px;
+
+        height: 170px;
+    }
+
+
+    #temperature {
+
+        font-size: 82px;
     }
 }
